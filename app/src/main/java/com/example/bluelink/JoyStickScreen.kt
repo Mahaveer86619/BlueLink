@@ -176,7 +176,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
         binding.IBVerticalDown.setOnClickListener {
             binding.tvData.text = "Data sent = D"
@@ -189,7 +188,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
         binding.IBVerticalNull.setOnClickListener {
             binding.tvData.text = "Data sent = Y"
@@ -202,7 +200,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
 
         // left right and up down joystick
@@ -217,7 +214,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
         binding.IBXyLeft.setOnClickListener {
             binding.tvData.text = "Data sent = L"
@@ -230,7 +226,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
         binding.IBXyRight.setOnClickListener {
             binding.tvData.text = "Data sent = R"
@@ -243,7 +238,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
         binding.IBXyBackward.setOnClickListener {
             binding.tvData.text = "Data sent = B"
@@ -256,7 +250,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
         binding.IBXyNull.setOnClickListener {
             binding.tvData.text = "Data sent = X"
@@ -269,7 +262,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
 
         // Claw toggle
@@ -284,7 +276,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
 
         binding.btnClawOpen.setOnClickListener {
@@ -298,7 +289,6 @@ class JoyStickScreen : AppCompatActivity() {
                 Toast.makeText(this@JoyStickScreen, "error in sending output stream", Toast.LENGTH_LONG).show()
                 throw RuntimeException(e)
             }
-            Thread.sleep(200)
         }
 
     }
@@ -307,6 +297,7 @@ class JoyStickScreen : AppCompatActivity() {
         super.onDestroy()
 
         try {
+            outputStream.close()
             bluetoothSocket.close()
             Log.d("Dev", "Connection closed")
         } catch (e: IOException) {
