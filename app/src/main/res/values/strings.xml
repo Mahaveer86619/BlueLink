@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">BlueLink</string>
-    <string name="close_claw">Close Claw</string>
-    <string name="open_claw">Open Claw</string>
+    <string name="close_claw">Close\nClaw</string>
+    <string name="open_claw">Open\nClaw</string>
 </resources>

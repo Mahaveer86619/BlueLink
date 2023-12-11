@@ -5,81 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/bg_blue"
+    android:background="@color/bg"
     tools:context=".JoyStickScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
-
-            <LinearLayout
+            android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/btnConnect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <TextView
-                    android:id="@+id/tv_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Data sent = F"
-                    android:textSize="22sp"
-                    android:textColor="@color/text_white"
-                    android:layout_margin="10dp"/>
-            </LinearLayout>
-
-            <LinearLayout
+                android:src="@drawable/disconnect"
+                android:background="@drawable/stroke_btn"
+                android:padding="10dp"
+                android:layout_margin="10dp"/>
+            <View
                 android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:gravity="center">
-                <Button
-                    android:id="@+id/btn_claw_close"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/close_claw"
-                    android:textSize="18sp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/text_black"
-                    android:layout_margin="30dp"
-                    android:background="@drawable/btn"
-                    app:backgroundTint="@color/green"/>
-                <Button
-                    android:id="@+id/btn_claw_open"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/open_claw"
-                    android:textSize="18sp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/text_black"
-                    android:layout_margin="30dp"
-                    android:background="@drawable/btn"
-                    app:backgroundTint="@color/green"
-                    android:clickable="true"
-                    android:focusable="true"/>
-            </LinearLayout>
-
+                tools:text="Data sent = F"
+                android:textSize="18sp"
+                android:textColor="@color/text_white"
+                android:layout_margin="10dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:paddingBottom="20dp">
+            android:gravity="center">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
+                android:gravity="center"
                 tools:ignore="NestedWeights">
                 <ImageButton
                     android:id="@+id/IB_vertical_up"
@@ -100,7 +69,6 @@
                         android:background="@drawable/btn"
                         android:layout_margin="3dp"/>
                     <ImageButton
-                        android:id="@+id/IB_xy_null"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/plus"
@@ -125,9 +93,72 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageButton
+                        android:id="@+id/IB_xy_null"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/stop"
+                        android:layout_margin="30dp"
+                        android:background="@drawable/btn" />
+                    <ImageButton
+                        android:id="@+id/IB_vertical_null"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/reset"
+                        android:layout_margin="30dp"
+                        android:background="@drawable/btn" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/btn_claw_close"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:text="@string/close_claw"
+                        android:textSize="12sp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_black"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn"
+                        app:backgroundTint="@color/green"/>
+                    <Button
+                        android:id="@+id/btn_claw_open"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:text="@string/open_claw"
+                        android:textSize="12sp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_black"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn"
+                        app:backgroundTint="@color/green"
+                        android:clickable="true"
+                        android:focusable="true"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="63dp">
                 <ImageButton
                     android:id="@+id/IB_xy_forward"
                     android:layout_width="60dp"
@@ -135,18 +166,9 @@
                     android:src="@drawable/up"
                     android:background="@drawable/btn"
                     android:layout_margin="3dp"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageButton
-                        android:id="@+id/IB_vertical_null"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/reset"
-                        android:background="@drawable/btn"
-                        android:layout_marginLeft="300dp" />
-                </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="66dp"/>
                 <ImageButton
                     android:id="@+id/IB_xy_backward"
                     android:layout_width="60dp"
@@ -155,7 +177,6 @@
                     android:background="@drawable/btn"
                     android:layout_margin="3dp"/>
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 
