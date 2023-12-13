@@ -35,11 +35,13 @@ class JoyStickScreen : AppCompatActivity() {
 
     private val uuid: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
-    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-        if (!isGranted) {
-            Toast.makeText(this@JoyStickScreen, "Bluetooth permission denied", Toast.LENGTH_SHORT).show()
+    private val permissionsLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val granted = permissions.entries.all { it.value }
+            if (!granted) {
+                Toast.makeText(this@JoyStickScreen, "Bluetooth permission denied", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
@@ -135,6 +137,7 @@ class JoyStickScreen : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     private fun connectToDevice(device: BluetoothDevice) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
@@ -143,14 +146,13 @@ class JoyStickScreen : AppCompatActivity() {
                         Manifest.permission.BLUETOOTH_CONNECT
                     ) != PackageManager.PERMISSION_GRANTED
                 ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return@launch
+                    permissionsLauncher.launch(
+                        arrayOf(
+                            Manifest.permission.BLUETOOTH,
+                            Manifest.permission.BLUETOOTH_CONNECT,
+                            Manifest.permission.BLUETOOTH_ADMIN
+                        )
+                    )
                 }
                 bluetoothSocket = device.createRfcommSocketToServiceRecord(uuid)
                 bluetoothSocket.connect()
